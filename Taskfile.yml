@@ -1,0 +1,26 @@
+version: "3"
+
+includes:
+  example:
+    taskfile: ./example/Taskfile.yml
+    dir: ./example
+
+tasks:
+  diagram-init:
+    desc: install diagram generator
+    cmds:
+      - poetry install --with docs
+  diagram-generate:
+    deps: [diagram-init]
+    desc: generate diagram
+    cmds:
+      - poetry run python diagram.py
+  clean:
+    desc: remove artifacts
+    cmds:
+      - rm example/alertmanager/alertmanager.yml
+      - rm main
+  build:
+    desc: build the exporter
+    cmds:
+      - go build -o obsidian-exporter -v main.go

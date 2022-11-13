@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "note-metrics"
+version = "0.1.0"
+description = ""
+authors = ["Mark Sharpley <698889+markopolo123@users.noreply.github.com>"]
+readme = "README.md"
+packages = [{include = "note_metrics"}]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+
+
+[tool.poetry.group.docs.dependencies]
+mkdocs = "^1.4.2"
+diagrams = "^0.23.1"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

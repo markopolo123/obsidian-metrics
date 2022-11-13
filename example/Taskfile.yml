@@ -1,0 +1,16 @@
+version: "3"
+
+tasks:
+  inject:
+    desc: template secrets from 1password
+    cmds:
+      - op inject -i alertmanager/alertmanager.yml.tpl -o alertmanager/alertmanager.yml
+    generates:
+      - alertmanager/alertmanager.yml
+    silent: true
+  up:
+    deps: [inject]
+    desc: start local prometheus and alertmanager
+    cmds:
+      - docker-compose up
+    silent: true
